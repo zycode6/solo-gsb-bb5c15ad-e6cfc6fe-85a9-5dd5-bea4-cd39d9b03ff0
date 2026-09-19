@@ -26,7 +26,8 @@ from __future__ import annotations
 import datetime as dt
 from dataclasses import dataclass
 
-from .expander import Instance, _parse_calendar, _props, expand_parsed_calendar
+from .expander import Instance, expand_parsed_calendar
+from .recurrence import _parse_calendar, _props
 
 UTC = dt.timezone.utc
 

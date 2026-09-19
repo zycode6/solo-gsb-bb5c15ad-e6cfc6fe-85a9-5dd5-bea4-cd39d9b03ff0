@@ -28,12 +28,8 @@ import datetime as dt
 from dataclasses import dataclass
 from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 
-from .expander import (
-    Instance,
-    _parse_calendar,
-    _to_utc,
-    expand_parsed_calendar,
-)
+from .expander import Instance, expand_parsed_calendar
+from .recurrence import _parse_calendar, _to_utc
 
 UTC = dt.timezone.utc
 
