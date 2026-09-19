@@ -1638,9 +1638,14 @@ app/main.py          FastAPI app: POST /expand, POST /provenance,
                      POST /availability, POST /conflicts, POST /validate,
                      POST /compress-schedule, POST /freebusy-export,
                      POST /fair-rotation, GET /health
-app/expander.py      recurrence expansion, override merging, TZ/DST handling
-app/provenance.py    per-occurrence provenance chains (RRULE/RDATE/DTSTART
-                     generation, EXDATE, RECURRENCE-ID override, final values)
+app/recurrence.py    shared recurrence kernel: candidate slots
+                     (DTSTART/RRULE/RDATE) -> EXDATE exclusion ->
+                     RECURRENCE-ID overrides -> final instances
+app/expander.py      /expand projection of the kernel: surviving instances,
+                     override merging, TZ/DST handling
+app/provenance.py    /provenance projection of the same kernel result:
+                     per-occurrence chains (generation, EXDATE, override,
+                     final values)
 app/compressor.py    shortest ICS over DAILY/WEEKLY RRULE grids + RDATE fallback
 app/agenda.py        local-day agenda fragments, midnight splitting, DATE handling
 app/validation.py    structural VEVENT checks, stable issue codes, sorting
